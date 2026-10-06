@@ -218,7 +218,7 @@ img {
 /* --- インフォメーション --- */
 .info-table {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 50px;
 }
 .info-table dl {
     display: flex;
@@ -237,6 +237,35 @@ img {
 .info-table dd {
     width: 70%;
     color: #666;
+}
+
+/* --- マップセクションスタイル --- */
+.map-box {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.map-title {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #8a7a6b;
+}
+.map-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 比率 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 /* --- フッター --- */
@@ -324,25 +353,26 @@ img {
     .grid { grid-template-columns: 1fr; }
     .info-table dt, .info-table dd { width: 100%; padding: 10px 0; }
     .info-table dt { border-bottom: none; padding-bottom: 0; }
+    .map-container { padding-bottom: 75%; } /* スマホでは縦幅を少し広く */
 }
     </style>
 </head>
 <body>
     <header class="header">
-      <div class="logo">
-        <a href="#">
-            <img src="rogo.jpg" alt="チロルのロゴ" class="logo-img">
-            <span><b>チーズケーキハウス・チロル</b></span>
-        </a>
-    </div>
-        <button class="menu-trigger" id="menuTrigger">
+        <div class="logo">
+            <a href="#">
+                <img src="rogo.jpg" alt="チロルのロゴ" class="logo-img">
+                <span><b>チーズケーキハウス・チロル</b></span>
+            </a>
+        </div>
+        <button class="menu-trigger" id="menuTrigger" aria-label="メニューを開く">
             <span></span><span></span>
         </button>
         <nav class="nav" id="navMenu">
             <ul>
-                <li><a href="#about">概要</a></li>
-                <li><a href="#concept">ここがイチオシ！</a></li>
-                <li><a href="#info">店舗情報</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#concept">Concept</a></li>
+                <li><a href="#info">Info</a></li>
             </ul>
         </nav>
     </header>
@@ -356,15 +386,15 @@ img {
 
     <section id="about" class="section fade-in">
         <div class="container">
-            <h2 class="section-title">概要</h2>
+            <h2 class="section-title">About</h2>
             <div class="about-flex">
                 <div class="about-img">
-                  <img src="Cheese_cake.JPG" alt="チロルのチーズケーキの画像">
+                    <img src="Cheese_cake.JPG" alt="チロルのチーズケーキの画像">
                 </div>
                 <div class="about-text">
                     <h3>本サイトの概要</h3>
-                    <p> 本サイトは岩手大学教育学部附属中学校3年生が制作しました。私たちは授業の一環としてグループごとに企業様と連携を取り、地域貢献活動というものを行っております。私たちのグループは、チロル様のチーズケーキを通して多くの方々に盛岡の魅力を知っていただこうと思いました。そこで、本サイトには私たちのおすすめポイントと店舗情報を記載いたします。（ウェブでの購入はチロル様の公式サイトで可能です。）</p>
-                    <span class="note">※SHOP INFROMATIONから公式サイトに飛ぶことができます。</span>
+                    <p>本サイトは岩手大学教育学部附属中学校3年生が制作しました。私たちは授業の一環としてグループごとに企業様と連携を取り、地域貢献活動というものを行っております。私たちのグループは、チロル様のチーズケーキを通して多くの方々に盛岡の魅力を知っていただこうと思いました。そこで、本サイトには私たちのおすすめポイントと店舗情報を記載いたします。（ウェブでの購入はチロル様の公式サイトで可能です。）</p>
+                    <span class="note">※SHOP INFORMATIONから公式サイトに飛ぶことができます。</span>
                 </div>
             </div>
         </div>
@@ -393,7 +423,8 @@ img {
 
     <section id="info" class="section fade-in">
         <div class="container">
-            <h2 class="section-title">店舗情報</h2>
+            <h2 class="section-title">Shop Information</h2>
+            
             <div class="info-table">
                 <dl>
                     <dt>営業時間</dt>
@@ -413,6 +444,20 @@ img {
                     </dd>
                 </dl>
             </div>
+
+            <!-- 店舗マップ領域 -->
+            <div class="map-box">
+                <h3 class="map-title">付近の店舗</h3>
+                <div class="map-container">
+                    <!-- Google マイマップで作成したiframeのURL（src）をここに貼り付けてください -->
+                    <iframe 
+                        src="https://www.google.com/maps/d/embed?mid=YOUR_MAP_ID" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
         </div>
     </section>
 
